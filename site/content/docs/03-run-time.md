@@ -22,7 +22,7 @@ The `onMount` function schedules a callback to run as soon as the component has 
 
 `onMount` does not run inside a [server-side component](docs#Server-side_component_API).
 
-```html
+```sv
 <script>
 	import { onMount } from 'svelte';
 
@@ -36,7 +36,7 @@ The `onMount` function schedules a callback to run as soon as the component has 
 
 If a function is returned from `onMount`, it will be called when the component is unmounted.
 
-```html
+```sv
 <script>
 	import { onMount } from 'svelte';
 
@@ -62,7 +62,7 @@ Schedules a callback to run immediately before the component is updated after an
 
 > The first time the callback runs will be before the initial `onMount`
 
-```html
+```sv
 <script>
 	import { beforeUpdate } from 'svelte';
 
@@ -82,7 +82,7 @@ afterUpdate(callback: () => void)
 
 Schedules a callback to run immediately after the component has been updated.
 
-```html
+```sv
 <script>
 	import { afterUpdate } from 'svelte';
 
@@ -104,7 +104,7 @@ Schedules a callback to run once the component is unmounted.
 
 Out of `onMount`, `beforeUpdate`, `afterUpdate` and `onDestroy`, this is the only one that runs inside a server-side component.
 
-```html
+```sv
 <script>
 	import { onDestroy } from 'svelte';
 
@@ -124,7 +124,7 @@ promise: Promise = tick()
 
 Returns a promise that resolves once any pending state changes have been applied, or in the next microtask if there are none.
 
-```html
+```sv
 <script>
 	import { beforeUpdate, tick } from 'svelte';
 
@@ -148,7 +148,7 @@ Associates an arbitrary `context` object with the current component and the spec
 
 Like lifecycle functions, this must be called during component initialisation.
 
-```html
+```sv
 <script>
 	import { setContext } from 'svelte';
 
@@ -166,7 +166,7 @@ context: any = getContext(key: any)
 
 Retrieves the context that belongs to the closest parent component with the specified `key`. Must be called during component initialisation.
 
-```html
+```sv
 <script>
 	import { getContext } from 'svelte';
 
@@ -186,7 +186,7 @@ Creates an event dispatcher that can be used to dispatch [component events](docs
 
 Component events created with `createEventDispatcher` create a [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent). These events do not [bubble](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture) and are not cancellable with `event.preventDefault()`. The `detail` argument corresponds to the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) property and can contain any type of data.
 
-```html
+```sv
 <script>
 	import { createEventDispatcher } from 'svelte';
 
@@ -231,7 +231,7 @@ unsubscribe();
 
 Stores have special significance inside Svelte components. Their values can be read by prefixing the store's name with the `$` character, which causes Svelte to set up subscriptions and unsubscriptions automatically during the component's lifecycle.
 
-```html
+```sv
 <script>
 	import { count } from './stores.js';
 
@@ -417,7 +417,7 @@ Both functions return a Promise that resolves when the tween completes. If the t
 
 Out of the box, Svelte will interpolate between two numbers, two arrays or two objects (as long as the arrays and objects are the same 'shape', and their 'leaf' properties are also numbers).
 
-```html
+```sv
 <script>
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
@@ -537,7 +537,7 @@ The `flip` function calculates the start and end position of an element and anim
 You can see a full example on the [animations tutorial](tutorial/animate)
 
 
-```html
+```sv
 <script>
 	import { flip } from 'svelte/animate';
 	import { quintOut } from 'svelte/easing';

@@ -30,7 +30,7 @@ A `<script>` block contains JavaScript that runs when a component instance is cr
 
 Svelte uses the `export` keyword to mark a variable declaration as a *property* or *prop*, which means it becomes accessible to consumers of the component:
 
-```html
+```sv
 <script>
 	// these properties can be set externally
 	export let foo;
@@ -61,7 +61,7 @@ Update expressions (`count += 1`) and property assignments (`obj.x = y`) have th
 
 Because Svelte's reactivity is based on assignments, using array methods like `.push()` and `.splice()` won't automatically trigger updates. Options for getting around this can be found in the [tutorial](tutorial/updating-arrays-and-objects).
 
-```html
+```sv
 <script>
 	let count = 0;
 
@@ -79,7 +79,7 @@ Because Svelte's reactivity is based on assignments, using array methods like `.
 
 Any top-level statement (i.e. not inside a block or a function) can be made reactive by prefixing it with the `$:` label. Reactive statements run immediately before the component updates, whenever the values that they depend on have changed.
 
-```html
+```sv
 <script>
 	export let title;
 
@@ -98,7 +98,7 @@ Any top-level statement (i.e. not inside a block or a function) can be made reac
 
 If a statement consists entirely of an assignment to an undeclared variable, Svelte will inject a `let` declaration on your behalf.
 
-```html
+```sv
 <script>
 	export let num;
 
@@ -119,7 +119,7 @@ Note that the store must be declared at the top level of the component — not i
 
 Local variables (that do not represent store values) must *not* have a `$` prefix.
 
-```html
+```sv
 <script>
 	import { writable } from 'svelte/store';
 
@@ -142,7 +142,7 @@ You can `export` bindings from this block, and they will become exports of the c
 
 You cannot `export default`, since the default export is the component itself.
 
-```html
+```sv
 <script context="module">
 	let totalComponents = 0;
 
@@ -181,7 +181,7 @@ This works by adding a class to affected elements, which is based on a hash of t
 
 To apply styles to a selector globally, use the `:global(...)` modifier.
 
-```html
+```sv
 <style>
 	:global(body) {
 		/* this will apply to <body> */
