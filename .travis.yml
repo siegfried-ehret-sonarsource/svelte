@@ -1,6 +1,4 @@
-language: node_js
-node_js:
-  - "node"
+dist: trusty
 
 env:
   global:
@@ -10,6 +8,14 @@ addons:
   apt:
     packages:
       - xvfb
+  sonarcloud:
+    organization: "siegfried-ehret-sonarsource-github" # the key of the org you chose at step #3
+    token:
+      secure: "pLpnlYr62O7p696PKjkP8ELbVEWoUK0F+HE/zckijdxdHzibXkAe3AcSPNm8sgcj5Vags39swvfCmCHo4cNn+/0twrXE6l9aYzDvcGYliAn3jRwQLX00xd/9pYqFTdVbZ4G/h8Y/DtCHRSYX43yXOKc2kzenKr7ncbx3Qc2zD4glZyiUWAFU/qcTQUipc6k6EGy6bZYYa/W4L2OiTy/Gfy2kh9JCkOJez8NRLPSBCYIv9AH8lhWitN0KSFJT6ytvYBp/QC4iZldBmgitX1lkpF1B5qHoQTU/n4vL9OAwfjDRqmQmGsu+0Fhbq5S2vdLOt14E9lRcLsYWmVomM7wM90EjURexlyDF8LCKJfont6VK5psjAeD+d1zO83APtb5LqgEMNAHJNSzEA4FLLYf8GqH5TMDUdr8HoQAYgBrRgE8272AY4dhgP1Ee46Fwgby+fbn5j+OrB6jklj7O2rmBYXfRs3Xm7ba5hZQg3v+iOR2x3AQ+7z4ITu7G5pOsmrhMYscyaKLXVR2wR6XQg0ivSfgMZl+wHMLRJaKKO0iwFQG9cz3kB4O3N1j5H//H8bN0c8o35i60e1nMBF4HpBFyobXum5rkAmGca73oxaemXgMZZJJu7CZ9nVlFIwzvhuPWJEaAtdarhu59CC8pEvKoTyseSFaRFFg8xy335V6rRH4=" # encrypted value of your token
+
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
 
 install:
   - export DISPLAY=':99.0'
